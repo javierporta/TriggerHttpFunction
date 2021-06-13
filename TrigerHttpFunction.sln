@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerHttpFunction", "TrigerHttpFunction\TriggerHttpFunction.csproj", "{7767AC1F-D757-4BA8-B64E-E619F8FE2D83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7767AC1F-D757-4BA8-B64E-E619F8FE2D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7767AC1F-D757-4BA8-B64E-E619F8FE2D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7767AC1F-D757-4BA8-B64E-E619F8FE2D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7767AC1F-D757-4BA8-B64E-E619F8FE2D83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFCE208E-FC46-4F55-9910-FC7F3FDBBEF0}
+	EndGlobalSection
+EndGlobal
