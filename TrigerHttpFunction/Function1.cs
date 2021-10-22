@@ -17,8 +17,6 @@ namespace TriggerHttpFunction
     public static class Function1
     {
         private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("Function1")]
         public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -35,7 +33,7 @@ namespace TriggerHttpFunction
             var minTemperature = data.Min(x => x.Temperature);
 
             //1. call my api and get client threshold
-            var cosmosResponse = await httpClient.GetAsync("https://bcn-iot-webapp.azurewebsites.net/api/Clients/MY_CLIENT");
+            var cosmosResponse = await httpClient.GetAsync("https://bcn-iot-webapp.azurewebsites.net/api/Clients/oifjweweo%24ineogsef27r3893r_273y2huiwfeg");
             var jsonString = await cosmosResponse.Content.ReadAsStringAsync();
             dynamic cosmosObject = JsonConvert.DeserializeObject<object>(jsonString);
             var temperatureHighThreshold = (double)cosmosObject.temperatureHighThreshold;
@@ -46,7 +44,8 @@ namespace TriggerHttpFunction
             //2. compare values with req
             log.LogInformation($"temperatureHighThreshold is {temperatureHighThreshold}");
             log.LogInformation($"temperatureLowThreshold is {temperatureLowThreshold}");
-            log.LogInformation($"Current temperature is {maxTemperature}");
+            log.LogInformation($"Current max temperature is {maxTemperature}");
+            log.LogInformation($"Current min temperature is {minTemperature}");
 
             var alertType = string.Empty;
             if (maxTemperature > temperatureHighThreshold)
@@ -69,9 +68,9 @@ namespace TriggerHttpFunction
 
                 var expoData = new ExpoData
                 {
-                    To = "ExponentPushToken[MY_TOKEN]",
+                    To = "ExponentPushToken[pZ_ZaCCJLa0IK8qm3klrh_]",
                     Title = $"Temperature is too {alertType}",
-                    Body = $"Current temperature between {maxTemperature}ºC and {minTemperature}ºC"
+                    Body = $"Current temperature between {minTemperature}ºC and {maxTemperature}ºC"
                 };
                 //Call expo and send push notification
                 var json = JsonConvert.SerializeObject(expoData); // or JsonSerializer.Serialize if using System.Text.Json
@@ -81,8 +80,8 @@ namespace TriggerHttpFunction
 
                 log.LogInformation(await postResult.Content.ReadAsStringAsync());
                 postResult.EnsureSuccessStatusCode();
-
                 log.LogInformation($"Push notification sent correctly");
+
             }
 
 
@@ -91,21 +90,22 @@ namespace TriggerHttpFunction
 
         }
 
-    }
-    public class RequestModel
-    {
-        public double Temperature { get; set; }
-        public DateTime Timestamp { get; set; }
-        public string Mac { get; set; }
-    }
-    public class ExpoData
-    {
-        [JsonProperty("to")]
-        public string To { get; set; }
-        [JsonProperty("title")]
-        public string Title { get; set; }
-        [JsonProperty("body")]
-        public string Body { get; set; }
-    }
+        public class RequestModel
+        {
+            public double Temperature { get; set; }
+            public DateTime Timestamp { get; set; }
+            public string Mac { get; set; }
+        }
 
-}
+        public class ExpoData
+        {
+            [JsonProperty("to")]
+            public string To { get; set; }
+            [JsonProperty("title")]
+            public string Title { get; set; }
+            [JsonProperty("body")]
+            public string Body { get; set; }
+        }
+
+
+    }
