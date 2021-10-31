@@ -4,6 +4,9 @@ Azure function triggered by a Azure Stream Analytics Job, which receive telemetr
 
 ## How it works
 
+<p align="center">
+  <img src="https://github.com/javierporta/TriggerHttpFunction/blob/master/EventTrigger.png?raw=true" alt="Event Trigger Explanation"/>
+</p>
 
 
 ## Deployed URL
